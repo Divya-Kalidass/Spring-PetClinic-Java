@@ -96,6 +96,8 @@ class PetController {
 		dataBinder.setValidator(new PetValidator());
 		dataBinder.setDisallowedFields("id", "*.id");
 	}
+	
+// editing this file, to check change validation - 2nd commit
 
 	@GetMapping("/pets/new")
 	public String initCreationForm(Owner owner, ModelMap model) {
@@ -120,6 +122,7 @@ class PetController {
 		if (result.hasErrors()) {
 			return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
 		}
+		// editing this file, to check change validation - 2nd commit
 
 		try {
 			owner.addPet(pet);
