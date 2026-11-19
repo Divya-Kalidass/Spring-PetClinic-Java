@@ -96,7 +96,7 @@ class PetController {
 		dataBinder.setValidator(new PetValidator());
 		dataBinder.setDisallowedFields("id", "*.id");
 	}
-	
+
 // editing this file, to check change validation - 2nd commit
 
 	@GetMapping("/pets/new")
@@ -114,9 +114,13 @@ class PetController {
 			result.rejectValue("name", "duplicate", "already exists");
 		}
 
+//		divya k modified response to invalid dates - commit 3
 		LocalDate currentDate = LocalDate.now();
-		if (pet.getBirthDate() != null && pet.getBirthDate().isAfter(currentDate)) {
-			result.rejectValue("birthDate", "typeMismatch.birthDate");
+		if (pet.getBirthDate() != null ){
+			result.rejectValue("birthDate", "Please enter date");
+		}
+		if(pet.getBirthDate().isAfter(currentDate)) {
+			result.rejectValue("birthDate", "Future dates are not allowed");
 		}
 
 		if (result.hasErrors()) {
