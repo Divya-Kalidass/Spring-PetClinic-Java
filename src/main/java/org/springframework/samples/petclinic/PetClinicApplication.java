@@ -25,6 +25,8 @@ import org.springframework.context.annotation.ImportRuntimeHints;
  *
  * @author Dave Syer
  */
+
+// editing this file, to check change validation
 @SpringBootApplication
 @ImportRuntimeHints(PetClinicRuntimeHints.class)
 public class PetClinicApplication {
