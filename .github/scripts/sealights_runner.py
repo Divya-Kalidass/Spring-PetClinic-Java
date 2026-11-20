@@ -110,6 +110,8 @@ def execute_tests(selection):
 
             "test",
 
+            "-Dspring-javaformat.validate.skip=true",
+
             f"-Dtest={selector}"
 
         ]
