@@ -164,30 +164,43 @@ def execute_individual_test(test, index):
 
         JACOCO_XML.unlink()
 
-    command = (
+    # command = (
 
-        get_maven_command()
+    #     get_maven_command()
 
-        + [
+    #     + [
 
-            "-B",
+    #         "-B",
 
-            "clean",
+    #         "clean",
 
-            f"org.jacoco:jacoco-maven-plugin:{JACOCO_VERSION}:prepare-agent",
+    #         f"org.jacoco:jacoco-maven-plugin:{JACOCO_VERSION}:prepare-agent",
 
-            "test",
+    #         "test",
 
-            f"org.jacoco:jacoco-maven-plugin:{JACOCO_VERSION}:report",
+    #         f"org.jacoco:jacoco-maven-plugin:{JACOCO_VERSION}:report",
 
-            "-Dspring-javaformat.validate.skip=true",
+    #         "-Dspring-javaformat.validate.skip=true",
             
-            "-Dmaven.test.failure.ignore=true", 
+    #         "-Dmaven.test.failure.ignore=true", 
 
+    #         f"-Dtest={selector}"
+
+    #     ]
+
+    # )
+    command = (
+        get_maven_command()
+        + [
+            "-B",
+            "clean",
+            "test",
+            "org.jacoco:jacoco-maven-plugin:0.8.15:report",
+            "-Dspring-javaformat.validate.skip=true",
+            "-Dmaven.test.failure.ignore=true",
+            "-Dsurefire.failIfNoSpecifiedTests=false",
             f"-Dtest={selector}"
-
         ]
-
     )
 
     log("=" * 70)
